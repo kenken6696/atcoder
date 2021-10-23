@@ -24,7 +24,7 @@ pip3 install online-judge-tools
 npm install -g atcoder-cli
 
 # config
-mv acc_config/py $(acc config-dir)
+cp -R acc_config/py $(acc config-dir)
 acc config default-template py
 
 acc config default-test-dirname-format test
