@@ -9,12 +9,7 @@
       "id": "abc079_a",
       "label": "A",
       "title": "Good Integer",
-      "url": "https://atcoder.jp/contests/abc079/tasks/abc079_a",
-      "directory": {
-        "path": "a",
-        "testdir": "test",
-        "submit": "main.py"
-      }
+      "url": "https://atcoder.jp/contests/abc079/tasks/abc079_a"
     },
     {
       "id": "abc079_b",
@@ -26,18 +21,18 @@
       "id": "abc079_c",
       "label": "C",
       "title": "Train Ticket",
-      "url": "https://atcoder.jp/contests/abc079/tasks/abc079_c",
-      "directory": {
-        "path": "c",
-        "testdir": "test",
-        "submit": "main.py"
-      }
+      "url": "https://atcoder.jp/contests/abc079/tasks/abc079_c"
     },
     {
       "id": "abc079_d",
       "label": "D",
       "title": "Wall",
-      "url": "https://atcoder.jp/contests/abc079/tasks/abc079_d"
+      "url": "https://atcoder.jp/contests/abc079/tasks/abc079_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     }
   ]
 }
