@@ -1,5 +1,5 @@
 ## 進め方
-[online-judge-tools](https://github.com/kmyk/online-judge-tools)が使いづらいので、[atcoder-cli](https://github.com/Tatamo/atcoder-cli#readme)を通して使う  
+[online-judge-tools](https://github.com/kmyk/online-judge-tools)が使いづらいので、[atcoder-cli](https://github.com/Tatamo/atcoder-cli#readme)を通して使う
 ojとaccの使い分けがややこしい
 
 ```
@@ -7,14 +7,19 @@ ojとaccの使い分けがややこしい
 oj login https://beta.atcoder.jp/
 
 # init and get testdata
-acc n abc555
-cd abc555/a
+acc n abc555 && cd abc555
 
 # test
 oj t -c 'python3 main.py'
 
 # submit
-acc submit main.py
+acc submit main.py -- --guess-python-interpreter pypy
+
+# alias
+alias accn='acc n'
+alias acct='oj t -c "python3 main.py"'
+alias accs='acc submit main.py -- --guess-python-interpreter pypy'
+
 ```
 
 ## 初期設定
@@ -31,7 +36,7 @@ acc config default-test-dirname-format test
 ```
 
 ## ちなみに
-pythonの場合、Shebang必須  
+pythonの場合、Shebang必須
 ないとoj submitで止まる
 ```
 #!/usr/bin/env python3
