@@ -12,9 +12,15 @@ L = [list(map(int, input().split())) for _ in range(N)]
 # listの出力
 print(list, *list, ','.join(map(str, list)))
 # [1, 2] 1 2 1,2
+# 逆順
+s = 'str'
+print(s[::-1]) # rts
 
 # 進数､論理和/論理積/排他的論理積
-bin(n) # 9=0b101
+bin(n), oct(n), hex(n) # 9=0b101, 2進数､8進数､16進数
+int('101', 2) # 2進数⇒10進数
+0b101>>2 # 右bitシフト 0b1=1
+0b101<<2 # 左bitシフト 0b10100=20
 1&9 # AND 001&101=001
 1|9 # OR 001|101=101
 1^9 # XOR 001|101=100
@@ -31,17 +37,17 @@ for index, list in enumerate(lists):
 x = '偶数' if num % 2 == 0 else '奇数'
 
 # 数え上げ
-itertools.product('abc', repeat=2) # 順列重複あり
-itertools.permutations('abc', 2) # 順列重複なし
-itertools.combinations_with_replacement('abc', 2) #組み合わせ重複あり
-itertools.combinations('abc', 2) #組み合わせ重複なし
+prdct = itertools.product('abc', repeat=2) # 順列重複あり
+pmt = itertools.permutations('abc', 2) # 順列重複なし
+cmbs = itertools.combinations_with_replacement('abc', 2) #組み合わせ重複あり
+cmbs = itertools.combinations('abc', 2) #組み合わせ重複なし
 
 # 累積和/いもす法
 # 複数回クエリする時は､累積和+[0]を計算しておくほうがはやい
 # 1次元
-L = list(range(1,7)) #[1,2,3,4,5,6]
-AC = list(itertools.accumulate(L))+[0] #[1,3,6,10,15,21,0]
-print(AC[4]-AC[0-1])# 15 (AC[4]-AC[-1]→15-0→15)
+L = list(range(1,7)) # [1,2,3,4,5,6]
+AC = list(itertools.accumulate(L))+[0] # [1,3,6,10,15,21,0]
+print(AC[4]-AC[0-1]) # 15 (AC[4]-AC[-1]→15-0→15)
 
 
 # 数値計算
@@ -103,9 +109,11 @@ from collections import deque
 d = deque(['m', 'n']) # 尺取法などにも
 
 ## 配列の最小値(最大値)
-# Priority queueなら､最小値はO(logn), 挿入もO(logn)
+### Priority queueなら､最小値はO(logn), 挿入もO(logn)
 pq_for_min = heapq.heapify(l)
 pq_for_max = heapq.heapify(list(map(lambda x: x*-1, l)))
+### 配列がある数値以上か確認
+if min(l) > x:
 
 
 # dict
