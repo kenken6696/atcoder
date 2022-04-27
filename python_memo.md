@@ -10,11 +10,17 @@ L = [list(map(int, input().split())) for _ in range(N)]
 
 # 出力
 # listの出力
-print(list, *list, ','.join(map(str, list)))
-# [1, 2] 1 2 1,2
+print(list, *list(sep=''), ','.join(map(str, list)))
+# [1, 2] 12 1,2
 # 逆順
 s = 'str'
 print(s[::-1]) # rts
+
+# アンパック
+a = 1,2 # タプルなどは展開され引数に格納される
+a, *b = 1, 2, 3, 4 # b=(2,3,4)と無制限に引数を受け付ける
+num1, num2, num3 = *b # *は展開も可能
+**kwagrs = **dic # **はキーワード引数のみ格納可能､展開不可
 
 # 進数､論理和/論理積/排他的論理積
 bin(n), oct(n), hex(n) # 9=0b101, 2進数､8進数､16進数
@@ -61,11 +67,12 @@ print('{:.9f}'.format(float(x))) #小数点9桁切り捨て
 # 整数化処理
 round(x) # 四捨五入
 A//B # 整数切り捨て
--(-A//B) # 整数切り上げ
+-(-1*A//B) # 整数切り上げ
 
 # 累乗
-a ** b # これでもいいが､powがはやい
+a ** b # これでもいいが､powが10倍はやい
 pow(a,b,c) # a**b%c
+30%3 == (10%3+20%3)%3 # 最後にmodするなら､初めからmodして良いし早い
 
 # 階乗
 math.factorial(n)
@@ -82,6 +89,14 @@ a=[0]*2 ,b=[[0]*2], c=[[0]]*2
 # 初期化
 l_2d_ok = [[0] * 4 for i in range(3)]
 l_2d_ng = [[0] * 4 ] * 3 # これだと同じオブジェクトになってしまう
+
+# copy
+new_list = old_list  # newへの操作はすべてoldにも影響でる
+new_list = copy.copy(old_list)  # oldの要素を変えるとnewも変更される
+new_list = copy.deepcopy(old_list)  # oldの要素を変えてもnewは変更されない
+
+# 転置行列
+X_t = np.array(X).T.tolist()
 
 # カウント
 l = ['a', 'a', 'a', 'a', 'b', 'c', 'c']

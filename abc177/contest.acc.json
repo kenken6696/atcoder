@@ -9,7 +9,12 @@
       "id": "abc177_a",
       "label": "A",
       "title": "Don't be late",
-      "url": "https://atcoder.jp/contests/abc177/tasks/abc177_a"
+      "url": "https://atcoder.jp/contests/abc177/tasks/abc177_a",
+      "directory": {
+        "path": "a",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc177_b",
@@ -32,7 +37,12 @@
       "id": "abc177_d",
       "label": "D",
       "title": "Friends",
-      "url": "https://atcoder.jp/contests/abc177/tasks/abc177_d"
+      "url": "https://atcoder.jp/contests/abc177/tasks/abc177_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc177_e",
