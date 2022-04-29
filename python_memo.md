@@ -5,7 +5,7 @@
 # 入力
 B = int(input())
 A, B, C = map(int, input().split())
-L = list(map(int, input().split()))
+L = list(map(int, input().split())) # [0]+して0埋めも検討
 L = [list(map(int, input().split())) for _ in range(N)]
 
 # 出力
@@ -124,9 +124,11 @@ from collections import deque
 d = deque(['m', 'n']) # 尺取法などにも
 
 ## 配列の最小値(最大値)
-### Priority queueなら､最小値はO(logn), 挿入もO(logn)
-pq_for_min = heapq.heapify(l)
-pq_for_max = heapq.heapify(list(map(lambda x: x*-1, l)))
+### Priority queue heap化 O(nlong), 最小値 O(1), 挿入/削除 O(logn)
+S = list(map(lambda x: x*-1, S)) # 最大値用
+heapq.heapify(S) # 優先度付きqueに変換
+heapq.heappop(S) # 最小値取り出し
+heapq.heappush(S, -2)  # 要素の挿入
 ### 配列がある数値以上か確認
 if min(l) > x:
 

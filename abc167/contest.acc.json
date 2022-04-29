@@ -32,7 +32,12 @@
       "id": "abc167_d",
       "label": "D",
       "title": "Teleporter",
-      "url": "https://atcoder.jp/contests/abc167/tasks/abc167_d"
+      "url": "https://atcoder.jp/contests/abc167/tasks/abc167_d",
+      "directory": {
+        "path": "d",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc167_e",
