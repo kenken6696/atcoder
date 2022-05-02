@@ -4,10 +4,13 @@
 ```
 # init/add(ディレクトリに依存しない)
 accna abc123/d # 最初に解きたい問題を必ず指定する
+
 # test(問題ディレクトリ下で実行)
 acct
+
 # submit(問題ディレクトリ下で実行)
-accs
+accs # pypy
+acc submit main.py -- -y # python3
 ```
 
 ## 初期設定
@@ -65,5 +68,3 @@ accna() {
 ```
 #!/usr/bin/env python3
 ```
-### pypyを標準設定にした
-仮にpythonで提出したい場合は手動でどうぞ

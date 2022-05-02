@@ -48,7 +48,12 @@
       "id": "abc177_e",
       "label": "E",
       "title": "Coprime",
-      "url": "https://atcoder.jp/contests/abc177/tasks/abc177_e"
+      "url": "https://atcoder.jp/contests/abc177/tasks/abc177_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "abc177_f",
