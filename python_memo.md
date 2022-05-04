@@ -8,6 +8,8 @@ A, B, C = map(int, input().split())
 L = list(map(int, input().split())) # [0]+して0埋めも検討
 L = [list(map(int, input().split())) for _ in range(N)]
 
+A=B=3 # 連続代入 AもBも3
+
 # 出力
 # listの出力
 print(list, *list(sep=''), ','.join(map(str, list)))
@@ -35,6 +37,7 @@ int('101', 2) # 2進数⇒10進数
 if a and b or c and d:
 # and処理 -> or処理 となる
 # (a and b) or (c and d)
+if a: # a>0 or a==True
 
 # 繰り返し文
 for index, list in enumerate(lists):
