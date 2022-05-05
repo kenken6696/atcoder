@@ -3,24 +3,16 @@
 n = int(input())
 mod = 998244353
 ans = 0
-if n == 1:
-    ans = 9
-elif n < 9:
-    # 1,9なし､どっちか のみ
-    without_edges = 7*3**(n-1)
-    with_edge = 0
-    for i in range(1, n):
-        with_edge += 2**i * 3**(n-1-i)
-    ans = without_edges + with_edge*2
-else:
-    # 1,9なし､どっちか､どっちも
-    without_edges = 7*3**(n-1)
-    with_edge = 0
-    with_edges = 0
-    for i in range(1, n):
-        with_edge += 2**i * 3**((n-1-i)+(n-9-i))
-        if i > n-9:
-            with_edges += 2**i * 3**(n-1-i)
-    ans = without_edges + with_edge*2 + with_edges
+dp = [[0]*10 for _ in range(n+1)] # dp[i][j]=i桁目がjの場合の数
+dp[2][1], dp[2][9] = 2, 2
+dp[2][2:9] = [3]*7
 
-print(ans%mod)
+for i in range(3, n+1):
+    for j in range(1, 10):
+        if j == 1:
+            dp[i][j] = (dp[i-1][j] + dp[i-1][j+1])%mod
+        elif j == 9:
+            dp[i][j] = (dp[i-1][j-1] + dp[i-1][j])%mod
+        else:
+            dp[i][j] = (dp[i-1][j-1] + dp[i-1][j] + dp[i-1][j+1])%mod
+print(sum(dp[n])%mod)

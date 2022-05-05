@@ -20,13 +20,23 @@
       "id": "dp_b",
       "label": "B",
       "title": "Frog 2",
-      "url": "https://atcoder.jp/contests/dp/tasks/dp_b"
+      "url": "https://atcoder.jp/contests/dp/tasks/dp_b",
+      "directory": {
+        "path": "b",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "dp_c",
       "label": "C",
       "title": "Vacation",
-      "url": "https://atcoder.jp/contests/dp/tasks/dp_c"
+      "url": "https://atcoder.jp/contests/dp/tasks/dp_c",
+      "directory": {
+        "path": "c",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "dp_d",
@@ -43,7 +53,12 @@
       "id": "dp_e",
       "label": "E",
       "title": "Knapsack 2",
-      "url": "https://atcoder.jp/contests/dp/tasks/dp_e"
+      "url": "https://atcoder.jp/contests/dp/tasks/dp_e",
+      "directory": {
+        "path": "e",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "dp_f",
@@ -85,7 +100,12 @@
       "id": "dp_l",
       "label": "L",
       "title": "Deque",
-      "url": "https://atcoder.jp/contests/dp/tasks/dp_l"
+      "url": "https://atcoder.jp/contests/dp/tasks/dp_l",
+      "directory": {
+        "path": "l",
+        "testdir": "test",
+        "submit": "main.py"
+      }
     },
     {
       "id": "dp_m",

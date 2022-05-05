@@ -180,10 +180,15 @@ R = [2,3,2]#この余りになる対のリスト
 r,m = crt(R,C)
 ```
 https://qiita.com/H20/items/1a066e242815961cd043#8%E3%82%AF%E3%83%A9%E3%82%B9%E3%82%AB%E3%83%AB%E6%B3%95%E6%9C%80%E5%B0%8F%E5%85%A8%E5%9F%9F%E6%9C%A8
+
+# 正規表現
+re.match(r'([a-z]+)@([a-z]+)\.com', str1)
+# [start-end]+は､1文字以上繰り返される場合にマッチ
+https://note.nkmk.me/python-re-match-search-findall-etc/
+
 まだやってないやつ
-6 bit探索
-29-32
-34-37
-42
+30-32
+34
+42 std::set https://qiita.com/tatyam/items/492c70ac4c955c055602
 
 ```
