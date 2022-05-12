@@ -24,6 +24,21 @@ a, *b = 1, 2, 3, 4 # b=(2,3,4)と無制限に引数を受け付ける
 num1, num2, num3 = *b # *は展開も可能
 **kwagrs = **dic # **はキーワード引数のみ格納可能､展開不可
 
+# 繰り返し
+## for文
+for i in range(5):
+## 拡張for文(index呼び出し省略したい時)
+for a in A: # A=[1,2,..]
+## enumarate(indexも欲しい時)
+for i, a in enumerate(A):
+## zip(iterable2つを同時に処理したい時)
+for a, b in zip(A, B): # 配列の長さは短い方が優先される
+for a, b in zip_longest(A,B, fillvalue=10) # 長い方優先,fillvalue(初期値None)で穴埋め
+for c in zip(A, B): # タブルc=(a,b)となる
+## 便利な使い方
+d = dict(zip(A, B)) # 配列の辞書化 d[a]=b
+two_d_l_T = list(zip(*two_d_l)) # 転置行列化
+
 # 進数､論理和/論理積/排他的論理積
 bin(n), oct(n), hex(n) # 9=0b101, 2進数､8進数､16進数
 int('101', 2) # 2進数⇒10進数
@@ -31,7 +46,7 @@ int('101', 2) # 2進数⇒10進数
 0b101<<2 # 左bitシフト 0b10100=20
 1&9 # AND 001&101=001
 1|9 # OR 001|101=101
-1^9 # XOR 001|101=100
+1^9 # XOR 001|101=100 x|y=z x|z=y
 
 # 条件
 if a and b or c and d:
@@ -140,6 +155,9 @@ heapq.heappush(S, -2)  # 要素の挿入
 ### 配列がある数値以上か確認
 if min(l) > x:
 
+## 配列の比較
+## Dictに持ち直してもO(a*b)かかるため､ハッシュ値の総和で比較する
+s = (s + a * (a + 1346) * (a + 9185)) % (8128812800000059)
 
 # dict
 from collections import defaultdict
