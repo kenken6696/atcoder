@@ -12,8 +12,8 @@ A=B=3 # 連続代入 AもBも3
 
 # 出力
 # listの出力
-print(list, *list(sep=''), ','.join(map(str, list)))
-# [1, 2] 12 1,2
+print(list, *list, sep='\n'), ','.join(map(str, list)))
+# [1, 2] 1(改行)2 1,2
 # 逆順
 s = 'str'
 print(s[::-1]) # rts
