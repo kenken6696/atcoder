@@ -78,6 +78,30 @@ Option:
         usage && return 1
     fi
 
+    if $flag_b; then
+        echo 'finishing Review...'
+        if [ -e $DIR/$contest_id/$problem_id/bk_main.py ];then
+            cd $DIR/$contest_id/$problem_id
+            mv bk_main.py main.py
+            return 0
+        else
+            echo 'cannot find bk_main.py:'$DIR/$contest_id/$problem_id && return 1
+        fi
+    fi
+
+    if [ -e $DIR/$contest_id/$problem_id/main.py ];then
+        echo 'You have already attended '$contest_id/$problem_id
+        echo 'Do you want to review? <y/n>'
+        read ans
+        if [ $ans = 'y' ]; then
+            flag_r=true
+        elif [ $ans = 'n' ]; then
+            return 0
+        else
+            return 1
+        fi
+    fi
+
     if $flag_r; then
         echo 'preparing to Review...'
         if [ -d $DIR/$contest_id/$problem_id ];then
@@ -88,16 +112,6 @@ Option:
             return 0
         else
             echo 'cannot find previous directory:'$DIR/$contest_id/$problem_id && return 1
-        fi
-    fi
-    if $flag_b; then
-        echo 'finishing Review...'
-        if [ -e $DIR/$contest_id/$problem_id/bk_main.py ];then
-            cd $DIR/$contest_id/$problem_id
-            mv bk_main.py main.py
-            return 0
-        else
-            echo 'cannot find bk_main.py:'$DIR/$contest_id/$problem_id && return 1
         fi
     fi
 
