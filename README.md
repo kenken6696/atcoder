@@ -5,6 +5,7 @@
 # init/add(ディレクトリに依存しない)
 accna abc123/d # 最初に解きたい問題を必ず指定する
 accna -r abc123/d # 既に解いた問題を復習する時は-rを指定
+accna -b abc123/d # 復習後､元に戻すなら-b(復習したmain.pyは消える)
 
 # test(問題ディレクトリ下で実行)
 acct
@@ -46,16 +47,20 @@ Args:
 
 Option:
     -r: use this option to review.
-        backup main.py as 'bk_yyyymmdd_hhmmss.py' and replace it for acc_config/py/main.py
+        backup main.py as 'bk_main.py' and replace it for acc_config/py/main.py
+    -b: use this option when finishing your review
+        replace main.py for bk_main.py and delete bk_main.py
         ">&2
     }
     DIR="$HOME/Repository/atcoder"
     flag_r=false
+    flag_b=false
     # check args
-    while getopts "rh" OPT
+    while getopts "rbh" OPT
     do
         case $OPT in
             r) flag_r=true;;
+            b) flag_b=true;;
             h) usage && return 0;;
             *) usage && return 1;;
         esac
@@ -77,12 +82,22 @@ Option:
         echo 'preparing to Review...'
         if [ -d $DIR/$contest_id/$problem_id ];then
             cd $DIR/$contest_id/$problem_id
-            cp main.py 'bk_'$(date "+%Y%m%d_%H%M%S").py
+            cp main.py 'bk_main.py'
             cp $(acc config-dir)/py/main.py .
             code main.py
             return 0
         else
             echo 'cannot find previous directory:'$DIR/$contest_id/$problem_id && return 1
+        fi
+    fi
+    if $flag_b; then
+        echo 'finishing Review...'
+        if [ -e $DIR/$contest_id/$problem_id/bk_main.py ];then
+            cd $DIR/$contest_id/$problem_id
+            mv bk_main.py main.py
+            return 0
+        else
+            echo 'cannot find bk_main.py:'$DIR/$contest_id/$problem_id && return 1
         fi
     fi
 
