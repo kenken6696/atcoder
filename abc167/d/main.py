@@ -8,7 +8,7 @@ S = [0] + list(map(int, input().split())) # 0埋め､l[i]はO(1)
 # 状態管理を初期化のままかどうかで行う
 visited = defaultdict(lambda: -1) # [街ナンバー]=テレポート回数
 visited[1] = 0
-now, not_cycle_c, cycle_c = 1, 0, 0
+now, not_cycle_c, cycle_c = 1, 0, 0 # --○ 行き先は1つずつなので左図になる
 for i in range(1, n+1):
     now = S[now]
     if visited[now] == -1: #未訪問

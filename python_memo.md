@@ -29,6 +29,7 @@ num1, num2, num3 = *b # *は展開も可能
 for i in range(5):
 ## 拡張for文(index呼び出し省略したい時)
 for a in A: # A=[1,2,..]
+for k, v in Dict.items():
 ## enumarate(indexも欲しい時)
 for i, a in enumerate(A):
 ## zip(iterable2つを同時に処理したい時)
