@@ -1,6 +1,6 @@
-## 進め方
+# Python Tips
 
-
+## 入力/出力/代入
 ```
 # 入力
 B = int(input())
@@ -18,28 +18,130 @@ print(list, *list, sep='\n'), ','.join(map(str, list)))
 s = 'str'
 print(s[::-1]) # rts
 
-# アンパック
+# アンパック(代入)
 a = 1,2 # タプルなどは展開され引数に格納される
 a, *b = 1, 2, 3, 4 # b=(2,3,4)と無制限に引数を受け付ける
 num1, num2, num3 = *b # *は展開も可能
 **kwagrs = **dic # **はキーワード引数のみ格納可能､展開不可
+```
 
-# 繰り返し
+
+## 繰り返し
+
+```
 ## for文
 for i in range(5):
+
 ## 拡張for文(index呼び出し省略したい時)
 for a in A: # A=[1,2,..]
 for k, v in Dict.items():
+
 ## enumarate(indexも欲しい時)
 for i, a in enumerate(A):
+
 ## zip(iterable2つを同時に処理したい時)
 for a, b in zip(A, B): # 配列の長さは短い方が優先される
 for a, b in zip_longest(A,B, fillvalue=10) # 長い方優先,fillvalue(初期値None)で穴埋め
 for c in zip(A, B): # タブルc=(a,b)となる
+
 ## 便利な使い方
 d = dict(zip(A, B)) # 配列の辞書化 d[a]=b
 two_d_l_T = list(zip(*two_d_l)) # 転置行列化
+```
 
+## 条件
+```
+## 0以上orTrueのとき条件文を省略できる
+if a: # a>0 or a==True
+
+## 三項演算子
+x = '偶数' if num % 2 == 0 else '奇数'
+
+## 複数条件(and処理->or処理)
+if a and b or c and d:
+# (a and b) or (c and d)
+```
+
+## 配列
+```
+# 初期化
+a=[0]*2 ,b=[[0]*2], c=[[0]]*2
+# a=[0,0], b=[[0,0]], c=[[0],[0]]
+
+# 2次元配列
+# 初期化
+l_2d_ok = [[0] * 4 for i in range(3)]
+l_2d_ng = [[0] * 4 ] * 3 # これだと同じオブジェクトになってしまう
+
+# copy
+new_list = old_list  # newへの操作はすべてoldにも影響でる
+new_list = copy.copy(old_list)  # oldの要素を変えるとnewも変更される
+new_list = copy.deepcopy(old_list)  # oldの要素を変えてもnewは変更されない
+
+# 転置行列
+X_t = np.array(X).T.tolist()
+two_d_l_T = list(zip(*two_d_l)) # 転置行列化
+
+# カウント
+l = ['a', 'a', 'a', 'a', 'b', 'c', 'c']
+len(l) # 7
+l.count('a') # 4
+
+c = collections.Counter(l) # Counter({'a': 4, 'c': 2, 'b': 1})
+c.items() # dict_items([('a', 4), ('b', 1), ('c', 2)])
+c['a'] # 4
+c.most_common() # [('a', 4), ('c', 2), ('b', 1)]
+c.most_common(2) # [('a', 4), ('c', 2)]
+values, counts = zip(*most_common())
+
+# ソート
+L = [[1,2,3],[2,3,4],[3,4,5]]
+L = sorted(L, reverse=True, key=lambda x: x[1])  #[1]に注目して降順ソート
+
+# ソート済み配列に挿入
+bisect.insort_left(A, x)
+# 配列ソートはO(nlogn),対して二部探索はO(logn)
+# A.insert(bisect.bisect_left(A,x))と同じ
+
+# キュー
+## dequeを使うが､添字アクセス両端はO(1)だが､中央はO(n)
+from collections import deque
+d = deque(['m', 'n']) # 尺取法などにも
+
+## 配列の最小値(最大値)
+### Priority queue heap化 O(nlong), 最小値 O(1), 挿入/削除 O(logn)
+S = list(map(lambda x: x*-1, S)) # 最大値用
+heapq.heapify(S) # 優先度付きqueに変換
+heapq.heappop(S) # 最小値取り出し
+heapq.heappush(S, -2)  # 要素の挿入
+### 配列がある数値以上か確認
+if min(l) > x:
+
+## 配列の比較
+## Dictに持ち直してもO(a*b)かかるため､ハッシュ値の総和で比較する
+s = (s + a * (a + 1346) * (a + 9185)) % (8128812800000059)
+```
+
+## dict
+```
+## defaultdict
+### 初期化
+from collections import defaultdict
+d = deaultdict(int) # keyerr避けにdictの代わりに
+d = deaultdict(lambda:5) # 初期値は関数指定
+d = deaultdict(lambda:deaultdict(list))
+
+### 操作
+d['key'] == d.get('key')
+d = dict(d) # keycheckや存在確認欲しかったらdictへ
+
+### sort
+d_sorted_tuple = sorted(d, reverse=True, key=lambda x: x[1])  # valueで降順ソートでtuple化
+d_sorted = dict(sorted(d, key=lambda x:x[0])) # keyで昇順ソートしてdict化
+```
+
+## その他(未整理)
+```
 # 進数､論理和/論理積/排他的論理積
 bin(n), oct(n), hex(n) # 9=0b101, 2進数､8進数､16進数
 int('101', 2) # 2進数⇒10進数
@@ -48,18 +150,6 @@ int('101', 2) # 2進数⇒10進数
 1&9 # AND 001&101=001
 1|9 # OR 001|101=101
 1^9 # XOR 001|101=100 x|y=z x|z=y
-
-# 条件
-if a and b or c and d:
-# and処理 -> or処理 となる
-# (a and b) or (c and d)
-if a: # a>0 or a==True
-
-# 繰り返し文
-for index, list in enumerate(lists):
-    print(str(index+1) + '番目：' + list)
-## 三項演算子
-x = '偶数' if num % 2 == 0 else '奇数'
 
 # 数え上げ
 prdct = itertools.product('abc', repeat=2) # 順列重複あり
@@ -104,69 +194,7 @@ math.factorial(n)
 # 最大公約数/最小公倍数 3.9-
 math.gcd(a,b)
 math.lcm(a,b)
-# 配列
-# 初期化
-a=[0]*2 ,b=[[0]*2], c=[[0]]*2
-# a=[0,0], b=[[0,0]], c=[[0],[0]]
 
-# 2次元配列
-# 初期化
-l_2d_ok = [[0] * 4 for i in range(3)]
-l_2d_ng = [[0] * 4 ] * 3 # これだと同じオブジェクトになってしまう
-
-# copy
-new_list = old_list  # newへの操作はすべてoldにも影響でる
-new_list = copy.copy(old_list)  # oldの要素を変えるとnewも変更される
-new_list = copy.deepcopy(old_list)  # oldの要素を変えてもnewは変更されない
-
-# 転置行列
-X_t = np.array(X).T.tolist()
-
-# カウント
-l = ['a', 'a', 'a', 'a', 'b', 'c', 'c']
-len(l) # 7
-l.count('a') # 4
-
-c = collections.Counter(l) # Counter({'a': 4, 'c': 2, 'b': 1})
-c.items() # dict_items([('a', 4), ('b', 1), ('c', 2)])
-c['a'] # 4
-c.most_common() # [('a', 4), ('c', 2), ('b', 1)]
-c.most_common(2) # [('a', 4), ('c', 2)]
-values, counts = zip(*most_common())
-# ソート
-L = [[1,2,3],[2,3,4],[3,4,5]]
-L = sorted(L, reverse=True, key=lambda x: x[1])  #[1]に注目して降順ソート
-
-# ソート済み配列に挿入
-bisect.insort_left(A, x)
-# 配列ソートはO(nlogn),対して二部探索はO(logn)
-# A.insert(bisect.bisect_left(A,x))と同じ
-
-# キュー
-## dequeを使うが､添字アクセス両端はO(1)だが､中央はO(n)
-from collections import deque
-d = deque(['m', 'n']) # 尺取法などにも
-
-## 配列の最小値(最大値)
-### Priority queue heap化 O(nlong), 最小値 O(1), 挿入/削除 O(logn)
-S = list(map(lambda x: x*-1, S)) # 最大値用
-heapq.heapify(S) # 優先度付きqueに変換
-heapq.heappop(S) # 最小値取り出し
-heapq.heappush(S, -2)  # 要素の挿入
-### 配列がある数値以上か確認
-if min(l) > x:
-
-## 配列の比較
-## Dictに持ち直してもO(a*b)かかるため､ハッシュ値の総和で比較する
-s = (s + a * (a + 1346) * (a + 9185)) % (8128812800000059)
-
-# dict
-from collections import defaultdict
-d = deaultdict(int) # keyerr避けにこっちつかお
-d = deaultdict(lambda:5) # 初期値は関数指定
-d = deaultdict(lambda:deaultdict(list))
-d['key'] == d.get('key')
-d = dict(d) # keycheckや存在確認欲しかったらdictへ
 
 # _の使い方
 def init_(x): # 後1 予約語の使用
