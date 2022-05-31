@@ -108,14 +108,19 @@ bisect.insort_left(A, x)
 from collections import deque
 d = deque(['m', 'n']) # 尺取法などにも
 
-## 配列の最小値(最大値)
+## 配列の最小値(最大値)(管理)
 ### Priority queue heap化 O(nlong), 最小値 O(1), 挿入/削除 O(logn)
 S = list(map(lambda x: x*-1, S)) # 最大値用
 heapq.heapify(S) # 優先度付きqueに変換
 heapq.heappop(S) # 最小値取り出し
 heapq.heappush(S, -2)  # 要素の挿入
+heappush(S, (5, 'write code')) # 数値を前にしたtupleも可能(dijkstraなどで使用)
 ### 配列がある数値以上か確認
 if min(l) > x:
+### 配列のTrue/Falseチェック
+all([True, True]) # すべてTrueか確認 ->True
+any([True, False]) # いずれかTrueか確認
+not any([False, False]) # すべてFalseか確認
 
 ## 配列の比較
 ## Dictに持ち直してもO(a*b)かかるため､ハッシュ値の総和で比較する
