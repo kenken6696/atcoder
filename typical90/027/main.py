@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
-n, m = map(int, input().split())
-S = list(map(int, input().split()))
-S = [ int(input()) for _ in range(n) ]
-S = [ list(map(int, input().split())) for _ in range(n) ]
-INF = float('inf')
+n = int(input())
+names = set()
+ans = []
+for i in range(n):
+    s = input()
+    if s in names:
+        pass
+    else:
+        names.add(s)
+        ans.append(i+1)
+for a in ans:
+    print(a)

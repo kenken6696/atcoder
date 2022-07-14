@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-n, m = map(int, input().split())
-S = list(map(int, input().split()))
-S = [ int(input()) for _ in range(n) ]
-S = [ list(map(int, input().split())) for _ in range(n) ]
-INF = float('inf')
+H, W = map(int, input().split())
+if H == 1 or W == 1:
+  print(H*W)
+  exit()
+k = H//2 + H%2 #横における最大の数
+l = W//2 + W%2
+print(k*l)

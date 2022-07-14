@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 
-n, m = map(int, input().split())
-S = list(map(int, input().split()))
-S = [ int(input()) for _ in range(n) ]
-S = [ list(map(int, input().split())) for _ in range(n) ]
-INF = float('inf')
+n= int(input())
+mod = 10**9+7
+p = 1
+for i in range(n):
+    ai = list(map(int, input().split()))
+    p *= sum(ai)%mod
+print(p%mod)
+

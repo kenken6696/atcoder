@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 
-n, m = map(int, input().split())
-S = list(map(int, input().split()))
-S = [ int(input()) for _ in range(n) ]
-S = [ list(map(int, input().split())) for _ in range(n) ]
-INF = float('inf')
+import math
+
+
+a, b = map(int, input().split())
+def lcm(a, b):
+    y = a*b // math.gcd(a, b)
+    return int(y)
+ans = lcm(a, b)
+if ans > 10**18:
+    print('Large')
+else:
+    print(ans)

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
-n, m = map(int, input().split())
-S = list(map(int, input().split()))
-S = [ int(input()) for _ in range(n) ]
-S = [ list(map(int, input().split())) for _ in range(n) ]
-INF = float('inf')
+from math import gcd
+
+
+a, b, c= map(int, input().split())
+g = gcd(gcd(a, b), c)
+ans = (a+b+c)//g-3
+print(ans)

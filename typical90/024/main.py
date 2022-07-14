@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 
-n, m = map(int, input().split())
-S = list(map(int, input().split()))
-S = [ int(input()) for _ in range(n) ]
-S = [ list(map(int, input().split())) for _ in range(n) ]
-INF = float('inf')
+n, k = map(int, input().split())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+dist = 0
+for i in range(n):
+    dist += abs(A[i]-B[i])
+if dist<=k and (dist-k)%2 == 0:
+    print('Yes')
+else:
+    print('No')
+
