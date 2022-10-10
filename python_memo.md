@@ -11,6 +11,8 @@ L = [list(map(int, input().split())) for _ in range(N)]
 A=B=3 # 連続代入 AもBも3
 
 # 出力
+# f文字列(Python3.6-)
+print(f'文字列と{hensu1} /n を混ぜて書けるよ') # 改行文字列はspaceで開ける
 # listの出力
 print(list, *list, sep='\n'), ','.join(map(str, list)))
 # [1, 2] 1(改行)2 1,2
@@ -24,8 +26,35 @@ a, *b = 1, 2, 3, 4 # b=(2,3,4)と無制限に引数を受け付ける
 num1, num2, num3 = *b # *は展開も可能
 **kwagrs = **dic # **はキーワード引数のみ格納可能､展開不可
 ```
+## ファイル入出力
+```
+with open('sample.txt') as f: # with構文だとclose不要,modeのデフォルトがrなので指定不要
+    contents = f.read() # 全部読みこみ
+    line = f.readline() # 1行だけ読み込み
+    lines = f.readlines() # 行ごとにlistで読み込み
+
+with open('sample.txt', mode='w') as f: # 引数に",
+    f.write(string)
+    f.writelines(list)
+
+```
 ## 文字列
 ```
+# 整形/空白･改行削除
+s = s.replace('\n', '\t') #改行をtabに
+s_list = s_list.split()
+
+# 文字コード変換
+c = chr(219) # asc2 to chr
+ord(c) = # chr to asc2
+
+# アルファベット判定
+import string
+list(string.ascii_lowercase)
+
+# ランダムシャッフル
+import random
+print(random.shuffle(l))
 # 置換
 ""Hello World!! Hello Python"".replace("Hello", "Hey!!")
 ```
@@ -49,6 +78,7 @@ for a, b in zip_longest(A,B, fillvalue=10) # 長い方優先,fillvalue(初期値
 for c in zip(A, B): # タブルc=(a,b)となる
 
 ## 便利な使い方
+for i, (a, b) in enumerate(zip(A, B)) # zipでenumerate
 d = dict(zip(A, B)) # 配列の辞書化 d[a]=b
 two_d_l_T = list(zip(*two_d_l)) # 転置行列化
 ```
@@ -193,8 +223,8 @@ arr[arr>0].sum() #0以上の合計値
 np.isclose(arr1, arr2) #浮動小数点誤差を考慮した比較
 
 ## 切り捨て/丸め
-np.floor(arr) #小数点切り捨て
-np.ceil(arr) #小数点切り上げ
+math.floor(arr) #小数点切り捨て(return int)
+math.ceil(arr) #小数点切り上げ(return int)
 np.round(arr, -1) #1桁目で四捨五入(注50は切り捨て)
 ```
 **data type**
@@ -237,7 +267,7 @@ np.dot(A, B) #行列積
 y = np.array([[1,2,3],[4,5,6],[7,8,9]])
 y[1] #行取り出し [4,5,6]
 y[:, 1] #列取り出し [2,5,8]
-```〒656-0534 南あわじ市北阿万筒井1509-1
+```
 ## numpyとりあえず
 ```
 # 集約関数(配列を処理して任意の結果を返す関数)
@@ -248,6 +278,9 @@ np.sum(A, axis=1) #0だと列ごと､1だと行ごと
 np.sin, np.exp, np.log, np.abs, np.sqrt, np.maximum, np.minimum
 np.sort, np.sort[::-1] #昇順sort, 降順sort
 ## 通常の関数は配列構造を維持して返す､numpyでは通常の関数にも配列を渡せる
+
+# 検索
+purin_idx = np.where(pokemon["names"]=='プリン')[0]
 ```
 
 ## dict
@@ -374,4 +407,13 @@ https://note.nkmk.me/python-re-match-search-findall-etc/
 34
 42 std::set https://qiita.com/tatyam/items/492c70ac4c955c055602
 
+```
+
+# Jupyter Tips
+
+## bash
+ワンライナーなら!､複数行なら##bashを宣言する
+```
+!ls
+##bash
 ```
