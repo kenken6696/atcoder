@@ -18,7 +18,7 @@ acc submit main.py -- -y # python3
 ## 初期設定
 ```
 # install
-pip3 install online-judge-tools
+pip install online-judge-tools selenium chromium-chromedriver
 npm install -g atcoder-cli
 
 # config
